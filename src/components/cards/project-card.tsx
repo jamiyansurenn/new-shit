@@ -46,6 +46,9 @@ export function ProjectCard({ project, locale }: ProjectCardProps) {
           <p className="text-xs text-muted">
             {pickLocalized(locale, project.location)}
           </p>
+          <p className="pt-2 text-xs font-semibold uppercase tracking-wide text-accent">
+            {locale === "mn" ? "Дэлгэрэнгүй мэдээлэл" : "View project details"}
+          </p>
         </CardContent>
       </Card>
     </Link>

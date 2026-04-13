@@ -44,18 +44,27 @@ export default async function ProjectsPage({ params, searchParams }: Props) {
     filter === "all"
       ? mockProjects
       : mockProjects.filter((p) => p.status === filter);
+  const featuredCount = mockProjects.filter((p) => p.featured).length;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <SectionHeading
-        eyebrow={locale === "mn" ? "Портфолио" : "Portfolio"}
-        title={locale === "mn" ? "Төслүүд" : "Projects"}
+        eyebrow={locale === "mn" ? "Борлуулалт ба гүйцэтгэл" : "Sales & delivery"}
+        title={locale === "mn" ? "Төслийн нэгдсэн сан" : "Project portfolio"}
         description={
           locale === "mn"
-            ? "Төлөв, байршил, төрлөөр шүүж үзэх боломжтой."
-            : "Filter by phase to explore our work."
+            ? "Төлөв, байршил, хөгжүүлэлтийн үе шатаар шүүж, хөрөнгө оруулалтын сонголтоо тодорхой болгоорой."
+            : "Filter by development status and compare opportunities with clear project context."
         }
       />
+      <div className="mt-6 flex flex-wrap gap-2 text-xs text-muted">
+        <span className="rounded-md bg-card px-2.5 py-1">
+          {locale === "mn" ? `Нийт ${mockProjects.length} төсөл` : `${mockProjects.length} total projects`}
+        </span>
+        <span className="rounded-md bg-card px-2.5 py-1">
+          {locale === "mn" ? `${featuredCount} онцлох` : `${featuredCount} featured`}
+        </span>
+      </div>
 
       <div
         className="mt-8 flex flex-wrap gap-2"

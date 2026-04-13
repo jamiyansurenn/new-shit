@@ -32,19 +32,19 @@ export const mockHomeBanner: HomeBanner = {
   imageUrl:
     "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
   headline: {
-    mn: "Ирээдүйн хотхоныг өнөөдөр бүтээнэ",
-    en: "Building tomorrow's communities today",
+    mn: "Барилгын чанар, хугацааг гэрээгээр баталгаажуулсан хөгжүүлэгч",
+    en: "A construction partner that guarantees quality and delivery timelines",
   },
   subline: {
-    mn: "Чанар, хугацаа, аюулгүй байдлыг эрхэмлэсэн бүтээн байгуулалт, үл хөдлөх хөрөнгийн бодит шийдлүүд.",
-    en: "Quality-driven construction and real estate solutions with disciplined delivery and uncompromising safety standards.",
+    mn: "2009 оноос хойш орон сууц, оффис, дэд бүтцийн төслүүдийг олон улсын чанарын хяналт, аюулгүй ажиллагааны стандарттайгаар хэрэгжүүлж байна.",
+    en: "Since 2009, we have delivered residential, office, and infrastructure projects with international-grade quality control and site safety standards.",
   },
   primaryCta: {
-    label: { mn: "Төслүүд үзэх", en: "View projects" },
+    label: { mn: "Төслүүдтэй танилцах", en: "View projects" },
     href: "/projects",
   },
   secondaryCta: {
-    label: { mn: "Зөвлөгөө авах", en: "Request consultation" },
+    label: { mn: "Төслийн зөвлөгөө авах", en: "Get consultation" },
     href: "/contact",
   },
 };
@@ -232,6 +232,18 @@ export const mockProjects: Project[] = [
         en: "24/7 security and concierge desk",
       },
     ],
+    specifications: [
+      { mn: "Бетон ангилал: C35/45", en: "Concrete grade: C35/45" },
+      { mn: "Цонх: Triple-glazed low-E", en: "Windows: Triple-glazed low-E" },
+      { mn: "Лифт: 3 өндөр хурдны лифт", en: "Vertical transport: 3 high-speed lifts" },
+    ],
+    paymentInfo: {
+      mn: "30% урьдчилгаа + банкны ипотекийн хөтөлбөр (хамтрагч банкнуудтай).",
+      en: "30% down payment with partner-bank mortgage programs available.",
+    },
+    brochureUrl: "https://example.com/brochures/khukh-tenger-residence.pdf",
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10693.0!2d106.905!3d47.885!2m3!1f0!2f0!3f0!",
     startedAt: "2023-04-01",
   },
   {
@@ -274,6 +286,18 @@ export const mockProjects: Project[] = [
         en: "Modular office pods for tenant fit-out",
       },
     ],
+    specifications: [
+      { mn: "Даацын шал: 5 тн/м²", en: "Floor load capacity: 5 t/m²" },
+      { mn: "Цэвэр өндөр: 10.5 м", en: "Clear height: 10.5 m" },
+      { mn: "Dock leveler: 32 цэг", en: "Dock levelers: 32 bays" },
+    ],
+    paymentInfo: {
+      mn: "Түрээс/худалдан авалтын уян хатан нөхцөл, урт хугацааны гэрээ.",
+      en: "Flexible lease-to-own and long-term tenancy structures.",
+    },
+    brochureUrl: "https://example.com/brochures/erdenet-logistics-hub.pdf",
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10693.0!2d104.044!3d49.027!2m3!1f0!2f0!3f0!",
     startedAt: "2024-08-15",
   },
   {
@@ -312,6 +336,18 @@ export const mockProjects: Project[] = [
         en: "High-floor-to-floor heights with flexible floorplates",
       },
     ],
+    specifications: [
+      { mn: "Нийт талбай: 32,000 м²", en: "Gross floor area: 32,000 m²" },
+      { mn: "Зогсоол: 420 автомашин", en: "Parking capacity: 420 vehicles" },
+      { mn: "HVAC: BMS удирдлагатай", en: "HVAC: BMS-enabled controls" },
+    ],
+    paymentInfo: {
+      mn: "Оффис/retail талбайн урт хугацааны түрээсийн багц.",
+      en: "Long-term leasing packages for office and retail occupiers.",
+    },
+    brochureUrl: "https://example.com/brochures/ulaanbaatar-business-park.pdf",
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10693.0!2d106.916!3d47.920!2m3!1f0!2f0!3f0!",
     completedAt: "2022-11-30",
   },
 ];
@@ -429,6 +465,13 @@ export const mockContactInfo: ContactInfo = {
     mn: "Даваа–Баасан 09:00–18:00",
     en: "Monday–Friday 09:00–18:00",
   },
+  whatsappUrl: "https://wa.me/97611320080",
+  messengerUrl: "https://m.me/esgelen.construction",
+  socialLinks: {
+    facebook: "https://facebook.com/esgelen.construction",
+    linkedin: "https://linkedin.com/company/esgelen-construction",
+    youtube: "https://youtube.com/@esgelenconstruction",
+  },
 };
 
 export const mockContactSubmissions: ContactSubmission[] = [
@@ -456,19 +499,119 @@ export const mockContactSubmissions: ContactSubmission[] = [
 
 export const mockStats = [
   {
-    value: "68+",
+    value: { mn: "68+", en: "68+" },
     label: { mn: "Амжилттай хэрэгжүүлсэн төсөл", en: "Delivered projects" },
   },
   {
-    value: "1.2M m²+",
+    value: { mn: "1.2 сая+ м²", en: "1.2M+ m²" },
     label: { mn: "Нийт барилгын талбай", en: "Gross floor area delivered" },
   },
   {
-    value: "240+",
+    value: { mn: "240+", en: "240+" },
     label: { mn: "Мэргэжилтэн", en: "Specialists on staff" },
   },
   {
-    value: "15 жил",
+    value: { mn: "15+ жил", en: "15+ years" },
     label: { mn: "Салбарын туршлага", en: "Years of sector experience" },
+  },
+];
+
+export const mockHeroTrustBadges = [
+  {
+    value: { mn: "15+ жил", en: "15+ years" },
+    label: { mn: "Туршлага", en: "Industry experience" },
+  },
+  {
+    value: { mn: "68+", en: "68+" },
+    label: { mn: "Хэрэгжүүлсэн төсөл", en: "Projects delivered" },
+  },
+  {
+    value: { mn: "1.2 сая м²+", en: "1.2M m²+" },
+    label: { mn: "Баригдсан талбай", en: "Built floor area" },
+  },
+];
+
+export const mockWhyChooseUs = [
+  {
+    icon: "ShieldCheck",
+    title: { mn: "Чанарын хяналтын систем", en: "Rigorous quality control" },
+    description: {
+      mn: "Материал, гүйцэтгэл бүрийг үе шат бүрт баталгаажуулдаг QA/QC процесс.",
+      en: "Stage-gate QA/QC protocols verify every material and construction package.",
+    },
+  },
+  {
+    icon: "Users",
+    title: { mn: "Туршлагатай инженерийн баг", en: "Experienced delivery team" },
+    description: {
+      mn: "Төслийн менежмент, зураг төсөл, талбайн инженерчлэлийг нэг баг удирдана.",
+      en: "Integrated PM, design, and site engineering teams under one management line.",
+    },
+  },
+  {
+    icon: "HardHat",
+    title: { mn: "Аюулгүй ажиллагааны соёл", en: "Safety-first construction culture" },
+    description: {
+      mn: "Өдөр тутмын хяналт, эрсдэлийн үнэлгээ, сургалтын тогтмол тогтолцоотой.",
+      en: "Daily supervision, proactive risk assessment, and recurring workforce training.",
+    },
+  },
+  {
+    icon: "Timer",
+    title: { mn: "Хугацаанд баригдсан гүйцэтгэл", en: "On-time milestone delivery" },
+    description: {
+      mn: "Төлөвлөгөөт график, ханган нийлүүлэлтийн нөөц төлөвлөгөөг хослуулдаг.",
+      en: "Program control and procurement contingency planning reduce schedule slippage.",
+    },
+  },
+  {
+    icon: "Blocks",
+    title: { mn: "Нэгдсэн шийдэл", en: "Integrated end-to-end solutions" },
+    description: {
+      mn: "Судалгаа, зураг төсөл, барилгажилт, борлуулалт, ашиглалтын бэлэн шийдэл.",
+      en: "From feasibility and design to construction, handover, and commercialization.",
+    },
+  },
+  {
+    icon: "Landmark",
+    title: { mn: "Урт хугацааны үнэ цэнэ", en: "Long-term asset value" },
+    description: {
+      mn: "Ашиглалтын зардлыг бууруулах, хөрөнгийн үнэ цэнийг өсгөх шийдлүүд.",
+      en: "Design and engineering decisions focused on lifecycle efficiency and value retention.",
+    },
+  },
+];
+
+export const mockPartners = [
+  "Tavan Bogd Properties",
+  "Khan Bank Corporate",
+  "Monnis Engineering",
+  "MCS Property",
+  "NCD Group",
+  "Premium Concrete LLC",
+];
+
+export const mockTestimonials = [
+  {
+    quote: {
+      mn: "Эсгэлэн баг гэрээний хугацааг барьж, тайлагнал маш тодорхой байсан. Хөрөнгө оруулагчийн хувьд хамгийн чухал итгэлийг өгсөн.",
+      en: "Esgelen met contractual milestones and maintained transparent reporting. For us as investors, that was the strongest trust signal.",
+    },
+    name: "Б.Эрдэнэбат",
+    role: {
+      mn: "Хөрөнгө оруулагч, худалдаа үйлчилгээний төсөл",
+      en: "Investor, mixed-use commercial project",
+    },
+  },
+  {
+    quote: {
+      mn: "Ашиглалтад оруулах шат хүртэл бүх процессыг нэг баг удирдсан нь шийдвэр гаргалтыг хурдасгасан.",
+      en: "Having one team manage the full delivery pipeline accelerated decision-making through commissioning.",
+    },
+    name: "Sarah Johnson",
+    role: {
+      mn: "Төслийн захирал, түнш байгууллага",
+      en: "Project Director, partner organization",
+    },
   },
 ];

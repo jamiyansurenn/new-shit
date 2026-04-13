@@ -13,6 +13,10 @@ export interface Project {
   galleryUrls: string[];
   planningNotes: LocalizedString;
   features: LocalizedString[];
+  specifications?: LocalizedString[];
+  paymentInfo?: LocalizedString;
+  brochureUrl?: string;
+  mapEmbedUrl?: string;
   status: ProjectStatus;
   featured: boolean;
   startedAt?: string;

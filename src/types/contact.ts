@@ -5,6 +5,13 @@ export interface ContactInfo {
   email: string;
   mapEmbedUrl?: string;
   businessHours?: { mn: string; en: string };
+  whatsappUrl?: string;
+  messengerUrl?: string;
+  socialLinks?: {
+    facebook?: string;
+    linkedin?: string;
+    youtube?: string;
+  };
 }
 
 export interface ContactSubmission {

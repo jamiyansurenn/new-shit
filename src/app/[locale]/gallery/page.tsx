@@ -9,6 +9,7 @@ import { galleryCategoryLabel } from "@/lib/constants";
 import type { GalleryCategoryId } from "@/types";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -91,14 +92,27 @@ export default async function GalleryPage({ params, searchParams }: Props) {
         ))}
       </div>
 
-      <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 text-center text-xs text-muted">
+        {locale === "mn"
+          ? `${filtered.length} зураг харуулж байна`
+          : `${filtered.length} images shown`}
+      </div>
+
+      <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((img) => {
           const alt = locale === "mn" ? img.altMn : img.altEn;
           return (
             <li
               key={img.id}
-              className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-border shadow-[var(--shadow-soft)]"
+              className="group relative overflow-hidden rounded-lg border border-border shadow-[var(--shadow-soft)]"
             >
+              <div
+                className={
+                  img.order % 5 === 0
+                    ? "relative aspect-[4/5]"
+                    : "relative aspect-[4/3]"
+                }
+              >
               <Image
                 src={img.imageUrl}
                 alt={alt}
@@ -109,10 +123,29 @@ export default async function GalleryPage({ params, searchParams }: Props) {
               <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-4 text-xs font-medium text-background">
                 {galleryCategoryLabel[img.categoryId][locale]}
               </span>
+              </div>
             </li>
           );
         })}
       </ul>
+
+      <div className="mt-12 rounded-lg border border-border bg-card p-6 text-center">
+        <h2 className="font-serif-display text-2xl font-semibold">
+          {locale === "mn"
+            ? "Төслийн бүрэн танилцуулга авах"
+            : "Request full project presentation"}
+        </h2>
+        <p className="mt-2 text-sm text-muted">
+          {locale === "mn"
+            ? "Зураг, төлөвлөлт, үнийн мэдээлэлтэй PDF танилцуулгыг манай борлуулалтын баг илгээнэ."
+            : "Our sales advisors can share full brochures with gallery, planning, and commercial details."}
+        </p>
+        <Button asChild className="mt-4">
+          <Link href={`/${locale}/contact`}>
+            {locale === "mn" ? "Мэдээлэл хүсэх" : "Request information"}
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }

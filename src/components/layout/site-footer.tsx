@@ -14,20 +14,22 @@ export function SiteFooter({ locale }: SiteFooterProps) {
     locale === "mn"
       ? "Бүх эрх хуулиар хамгаалагдсан."
       : "All rights reserved.";
+  const footerDescription =
+    locale === "mn"
+      ? "Орон сууц, үйлчилгээний болон дэд бүтцийн төслүүдийг чанар, аюулгүй байдал, хугацааны хяналттайгаар хэрэгжүүлдэг барилгын компани."
+      : "A construction and real estate company delivering residential, commercial, and infrastructure projects with strict quality and schedule control.";
 
   return (
     <footer className="border-t border-border bg-card">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:px-8">
-        <div className="space-y-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr_0.9fr] lg:px-8">
+        <div className="space-y-4 lg:pr-6">
           <p className="font-serif-display text-xl font-semibold">
             {siteShortName}
           </p>
           <p className="max-w-md text-sm leading-relaxed text-muted">
-            {pickLocalized(locale, mockCompanyProfile.tagline)}
+            {footerDescription}
           </p>
-          <p className="text-sm text-muted">
-            {mockContactInfo.phone} · {mockContactInfo.email}
-          </p>
+          <p className="text-sm text-muted">{pickLocalized(locale, mockContactInfo.address)}</p>
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
@@ -45,6 +47,47 @@ export function SiteFooter({ locale }: SiteFooterProps) {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="space-y-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+            {locale === "mn" ? "Холбоо ба эрх зүй" : "Contact & legal"}
+          </p>
+          <div className="space-y-2 text-sm text-muted">
+            <p>{mockContactInfo.phone}</p>
+            <p>{mockContactInfo.email}</p>
+            <a href="#" className="block hover:text-accent">
+              {locale === "mn" ? "Нууцлалын бодлого" : "Privacy policy"}
+            </a>
+            <a href="#" className="block hover:text-accent">
+              {locale === "mn" ? "Үйлчилгээний нөхцөл" : "Terms of service"}
+            </a>
+            <div className="flex gap-3 pt-2">
+              <a
+                href={mockContactInfo.socialLinks?.facebook ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
+                Facebook
+              </a>
+              <a
+                href={mockContactInfo.socialLinks?.linkedin ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={mockContactInfo.socialLinks?.youtube ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
+                YouTube
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div className="border-t border-border py-6 text-center text-xs text-muted">

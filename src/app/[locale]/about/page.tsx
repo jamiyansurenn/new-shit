@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildPageMetadata(locale, {
     title: { mn: "Бидний тухай", en: "About" },
     description: {
-      mn: pickLocalized(locale, mockCompanyProfile.introduction).slice(0, 155),
-      en: pickLocalized(locale, mockCompanyProfile.introduction).slice(0, 155),
+      mn: mockCompanyProfile.introduction.mn.slice(0, 155),
+      en: mockCompanyProfile.introduction.en.slice(0, 155),
     },
     path: "/about",
   });

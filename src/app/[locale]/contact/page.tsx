@@ -5,9 +5,10 @@ import { pickLocalized } from "@/lib/i18n";
 import { buildPageMetadata } from "@/lib/seo";
 import { mockContactInfo } from "@/lib/mock-data";
 import { SectionHeading } from "@/components/layout/section-heading";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "@/components/forms/contact-form";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, MessageSquare } from "lucide-react";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -37,8 +38,8 @@ export default async function ContactPage({ params }: Props) {
         title={locale === "mn" ? "Холбоо барих" : "Get in touch"}
         description={
           locale === "mn"
-            ? "Төслийн зөвлөгөө, хамтын ажиллагааны санал хүлээн авна."
-            : "We welcome project enquiries and partnership discussions."
+            ? "Төслийн зөвлөгөө, үнийн санал, хамтын ажиллагааны хүсэлтийг хүлээн авч байна."
+            : "Reach our team for project consultations, pricing information, and partnerships."
         }
       />
 
@@ -98,6 +99,52 @@ export default async function ContactPage({ params }: Props) {
                   </div>
                 </div>
               ) : null}
+              <div className="rounded-md border border-border bg-background p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                  {locale === "mn" ? "Хариу өгөх хугацаа" : "Response expectation"}
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  {locale === "mn"
+                    ? "Ихэнх хүсэлтэд ажлын цагаар 1 цагийн дотор, хамгийн ихдээ 1 ажлын өдөрт багтаан хариулна."
+                    : "Most inquiries are answered within one hour during business hours, and within one business day at the latest."}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="space-y-4 p-6">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                {locale === "mn" ? "Шуурхай холбогдох" : "Quick contact options"}
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                <Button asChild variant="secondary" className="justify-start">
+                  <a href={`tel:${mockContactInfo.phone.replace(/\s/g, "")}`}>
+                    <Phone className="mr-2 size-4" />
+                    {locale === "mn" ? "Залгах" : "Call now"}
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="justify-start">
+                  <a
+                    href={mockContactInfo.whatsappUrl ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="mr-2 size-4" />
+                    WhatsApp
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="justify-start">
+                  <a
+                    href={mockContactInfo.messengerUrl ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageSquare className="mr-2 size-4" />
+                    Messenger
+                  </a>
+                </Button>
+              </div>
             </CardContent>
           </Card>
 
