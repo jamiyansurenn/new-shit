@@ -1,0 +1,144 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------- Shared ----------
+// Multilingual fields are stored as Json:
+// { "mn": "...", "en": "..." }
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model CompanyProfile {
+  id           Int      @id @default(autoincrement())
+  legalName    Json
+  tagline      Json
+  introduction Json
+  vision       Json
+  mission      Json
+  strengths    Json
+  foundedYear  Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model HomeBanner {
+  id           Int      @id @default(autoincrement())
+  imageUrl     String
+  headline     Json
+  subline      Json
+  primaryCta   Json
+  secondaryCta Json?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Service {
+  id               Int      @id @default(autoincrement())
+  slug             String   @unique
+  title            Json
+  shortDescription Json
+  description      Json
+  iconName         String?
+  imageUrl         String?
+  sortOrder        Int      @default(0)
+  isPublished      Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Project {
+  id            Int      @id @default(autoincrement())
+  slug          String   @unique
+  title         Json
+  summary       Json
+  description   Json
+  location      Json
+  coverImageUrl String
+  galleryUrls   String[]
+  planningNotes Json
+  features      Json
+  status        String   @default("planning")
+  featured      Boolean  @default(false)
+  startedAt     DateTime?
+  completedAt   DateTime?
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model NewsArticle {
+  id           Int      @id @default(autoincrement())
+  slug         String   @unique
+  title        Json
+  excerpt      Json
+  content      Json
+  coverImageUrl String
+  publishedAt  DateTime
+  author       Json?
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model GalleryImage {
+  id         Int      @id @default(autoincrement())
+  categoryId String
+  imageUrl   String
+  altMn      String
+  altEn      String
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model ContactInfo {
+  id           Int      @id @default(autoincrement())
+  address      Json
+  phone        String
+  email        String
+  mapEmbedUrl  String?
+  businessHours Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SEOSettings {
+  id                  Int      @id @default(autoincrement())
+  siteName            Json
+  defaultTitleSuffix  Json
+  defaultDescription  Json
+  ogImageUrl          String
+  twitterHandle       String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
