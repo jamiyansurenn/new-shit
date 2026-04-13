@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { mockContactSubmissions } from "@/lib/mock-data";
+import { getStoredSubmissions } from "@/lib/submissions-store";
 
 export async function GET() {
   try {
@@ -26,10 +26,11 @@ export async function GET() {
         })),
       });
     } catch {
+      const localRows = await getStoredSubmissions();
       return NextResponse.json({
         success: true,
         persisted: false,
-        data: mockContactSubmissions,
+        data: localRows,
       });
     }
   } catch {

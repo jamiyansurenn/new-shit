@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
+import { addStoredSubmission } from "@/lib/submissions-store";
 import { contactFormSchema } from "@/lib/validators";
 
 export async function POST(request: Request) {
@@ -7,7 +8,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const input = contactFormSchema.parse(body);
     let createdAt = new Date().toISOString();
-    let id = `fallback-${Date.now()}`;
+    let id = `local-${Date.now()}`;
     let persisted = false;
 
     try {
@@ -26,7 +27,14 @@ export async function POST(request: Request) {
       persisted = true;
       await prisma.$disconnect();
     } catch {
-      // Fallback keeps UX working even when DB is not configured yet.
+      const created = await addStoredSubmission({
+        name: input.name,
+        phone: input.phone,
+        email: input.email,
+        message: input.message,
+      });
+      id = created.id;
+      createdAt = created.createdAt;
       persisted = false;
     }
 
